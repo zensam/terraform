@@ -22,7 +22,7 @@ RUN mkdir ~/.aws && touch ~/.aws/credentials
 ################################
 
 # Download kubectl for linux
-RUN wget https://storage.googleapis.com/kubernetes-release/release/v1.12.9/bin/linux/amd64/kubectl
+RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v1.12.9/bin/linux/amd64/kubectl
 RUN chmod +x kubectl
 RUN mv kubectl /usr/local/bin/
 
