@@ -39,6 +39,6 @@ RUN wget -q https://github.com/weaveworks/eksctl/releases/download/latest_releas
 RUN terraform version
 RUN aws-iam-authenticator help
 RUN jq --version
-RUN aws --version \
+RUN aws --version
 
 ENTRYPOINT ["terraform"]
