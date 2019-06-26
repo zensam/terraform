@@ -15,8 +15,6 @@ apt-get install jq unzip wget vim -y
 RUN wget https://storage.googleapis.com/kubernetes-release/release/v${KUBEVER}/bin/linux/amd64/kubectl
 RUN chmod +x kubectl
 RUN mv kubectl /usr/local/bin/
-# Check that it's installed
-RUN kubectl version
 
 ################################
 # Install Terraform
