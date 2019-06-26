@@ -3,7 +3,7 @@ FROM ubuntu:latest
 ENV TERM=xterm PATH=~/.local/bin:$PATH TFVER=0.11.14 KUBEVER=1.12.9
 
 RUN apt-get update -y \
-&& apt-get install awcli jq unzip wget -y
+&& apt-get install awscli jq unzip wget -y
 
 ################################
 # Install Kubectl
