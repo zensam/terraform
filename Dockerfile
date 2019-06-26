@@ -11,8 +11,8 @@ RUN apt-get update -y \
 
 # Download kubectl for linux
 RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v${KUBEVER}/bin/linux/amd64/kubectl \
-&& chmod +x kubectl \
-&& mv kubectl /usr/local/bin/
+&& chmod +x ./kubectl \
+&& mv ./kubectl /usr/local/bin/
 
 ################################
 # Install Terraform
@@ -37,10 +37,12 @@ RUN pip --version
 # Install AWS CLI
 ################################
 RUN pip install awscli --upgrade --user
-
-# add aws cli location to path
-ENV PATH=~/.local/bin:$PATH
-
 RUN mkdir ~/.aws && touch ~/.aws/credentials
+
+RUN wget -q https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator \
+&& chmod +x ./aws-iam-authenticator \
+&& mv ./aws-iam-authenticator
+
+RUN aws-iam-authenticator help
 
 ENTRYPOINT ["terraform"]
