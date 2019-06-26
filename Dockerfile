@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:0.12.3
+FROM hashicorp/terraform:0.11.14
 
 ENV TERM=xterm PATH=~/.local/bin:$PATH
 
