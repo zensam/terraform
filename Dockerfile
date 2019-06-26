@@ -10,7 +10,7 @@ RUN apt-get update -y \
 ################################
 
 # Download kubectl for linux
-RUN wget https://storage.googleapis.com/kubernetes-release/release/v${KUBEVER}/bin/linux/amd64/kubectl \
+RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v${KUBEVER}/bin/linux/amd64/kubectl \
 && chmod +x kubectl \
 && mv kubectl /usr/local/bin/
 
@@ -19,7 +19,7 @@ RUN wget https://storage.googleapis.com/kubernetes-release/release/v${KUBEVER}/b
 ################################
 
 # Download terraform for linux
-RUN wget https://releases.hashicorp.com/terraform/${TFVER}/terraform_${TFVER}_linux_amd64.zip \
+RUN wget -q https://releases.hashicorp.com/terraform/${TFVER}/terraform_${TFVER}_linux_amd64.zip \
 && unzip terraform_${TFVER}_linux_amd64.zip \
 && mv terraform /usr/local/bin/
 
