@@ -43,6 +43,9 @@ RUN wget -q https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/
 && chmod +x ./aws-iam-authenticator \
 && mv ./aws-iam-authenticator /usr/local/bin/
 
-RUN aws-iam-authenticator help
+RUN aws-iam-authenticator help \
+&& jq --version \
+&& aws --version \
+&& terraform version
 
 ENTRYPOINT ["terraform"]
