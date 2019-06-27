@@ -14,7 +14,7 @@ RUN apk add --update --no-cache \
         google-api-python-client \
         google-auth \
         awscli --upgrade \
-        ekscli
+        ekscli --upgrade
         # awscli --upgrade --user
 
 RUN mkdir ~/.aws && touch ~/.aws/credentials
@@ -28,5 +28,6 @@ RUN terraform version
 # RUN aws-iam-authenticator help
 RUN jq --version
 RUN aws --version
+RUN eksctl version
 
 ENTRYPOINT ["terraform"]
