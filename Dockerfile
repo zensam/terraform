@@ -18,9 +18,7 @@ RUN apk add --update --no-cache \
         # awscli --upgrade --user \
         ekscli --upgrade
 
-RUN mkdir ~/.aws \
-&& touch ~/.aws/credentials \
-&& rm /var/cache/apk/*
+RUN mkdir ~/.aws && touch ~/.aws/credentials
 
 # Install AWS IAM Authenticator
 RUN wget -q https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator \
