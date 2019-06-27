@@ -13,7 +13,9 @@ RUN apk add --update --no-cache \
         google \
         google-api-python-client \
         google-auth \
-        awscli --upgrade --user
+        awscli --upgrade \
+        ekscli
+        # awscli --upgrade --user
 
 RUN mkdir ~/.aws && touch ~/.aws/credentials
 
