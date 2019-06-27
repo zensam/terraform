@@ -13,7 +13,7 @@ RUN apk add --update --no-cache \
         google \
         google-api-python-client \
         google-auth \
-        rsa==3.5.0 \
+        rsa==3.4.2 \
         awscli --upgrade \
         # awscli --upgrade --user \
         ekscli --upgrade
