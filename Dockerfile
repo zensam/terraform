@@ -1,6 +1,6 @@
 FROM hashicorp/terraform:0.12.3
 
-ENV TERM=xterm PATH=~/.local/bin:$PATH
+ENV TERM=xterm TF_LOG=INFO PATH=~/.local/bin:$PATH
 
 RUN apk add --update --no-cache \
         make \
@@ -13,16 +13,23 @@ RUN apk add --update --no-cache \
         google \
         google-api-python-client \
         google-auth \
-        awscli --upgrade --user
+        rsa==3.4.2 \
+        awscli --upgrade \
+        # awscli --upgrade --user \
+        ekscli --upgrade
 
-RUN mkdir ~/.aws && touch ~/.aws/credentials
+RUN mkdir ~/.aws \
+&& touch ~/.aws/credentials \
+&& apk -v --purge del py-pip \
+&& rm /var/cache/apk/*
 
-################################
-# Install Kubectl
-################################
+# Install AWS IAM Authenticator
+RUN wget -q https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator \
+&& chmod +x ./aws-iam-authenticator \
+&& mv ./aws-iam-authenticator /usr/local/bin/
 
-# Download kubectl for linux
-RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v1.12.9/bin/linux/amd64/kubectl
+# Install kubectl
+RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubectl
 RUN chmod +x kubectl
 RUN mv kubectl /usr/local/bin/
 
