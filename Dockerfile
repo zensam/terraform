@@ -29,11 +29,4 @@ RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bi
 RUN chmod +x kubectl
 RUN mv kubectl /usr/local/bin/
 
-RUN terraform version
-RUN aws-iam-authenticator help
-RUN jq --version
-RUN aws --version
-RUN eksctl version
-RUN kubectl help
-
 ENTRYPOINT ["terraform"]
