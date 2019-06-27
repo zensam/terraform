@@ -20,7 +20,6 @@ RUN apk add --update --no-cache \
 
 RUN mkdir ~/.aws \
 && touch ~/.aws/credentials \
-&& apk -v --purge del py-pip \
 && rm /var/cache/apk/*
 
 # Install AWS IAM Authenticator
