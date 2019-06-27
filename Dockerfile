@@ -17,13 +17,14 @@ RUN apk add --update --no-cache \
 
 RUN mkdir ~/.aws && touch ~/.aws/credentials
 
-################################
-# Install Kubectl
-################################
-
-# Download kubectl for linux
+# Install kubectl
 RUN wget -q https://storage.googleapis.com/kubernetes-release/release/v1.12.9/bin/linux/amd64/kubectl
 RUN chmod +x kubectl
 RUN mv kubectl /usr/local/bin/
+
+RUN terraform version
+# RUN aws-iam-authenticator help
+RUN jq --version
+RUN aws --version
 
 ENTRYPOINT ["terraform"]
