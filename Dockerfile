@@ -13,11 +13,15 @@ RUN apk add --update --no-cache \
         google \
         google-api-python-client \
         google-auth \
+        rsa==3.5.0 \
         awscli --upgrade \
         # awscli --upgrade --user \
         ekscli --upgrade
 
-RUN mkdir ~/.aws && touch ~/.aws/credentials
+RUN mkdir ~/.aws \
+&& touch ~/.aws/credentials \
+&& apk -v --purge del py-pip \
+&& rm /var/cache/apk/*
 
 # Install AWS EKS CLI
 RUN wget -q https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator \
